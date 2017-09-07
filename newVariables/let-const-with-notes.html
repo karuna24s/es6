@@ -6,12 +6,41 @@
   </head>
   <body>
     <script>
-    // Inside where the const and let variables are declared we can only do that once.
+    // Inside the scope where the const and let variables are declared
+    // we can only do that once.
       const key = 'abc123';
       let points = 50;
+      // scope to the window
       let winner = false;
 
+    // Example:
+    // let points = 60;
+    // Uncaught SyntaxError: Identifier 'points' has already been declared
+    // As you don't want to declare the same variable twice instead you can
+    // update a let variable like: points = 60;
 
+    // if(points > 40) {
+      // this is scoped to this block. But it has been declared before in the window.
+      // let winner = true;
+    // }
+    // If you type winner in the console, you will get false because
+
+    // The difference between const and let is that const variables cannot be updated
+    // and let variables are made to be updated.
+
+    // Sometimes people assume that const is immuatable example being:
+    const person = {
+      name: 'Wes',
+      age: '28'
+    }
+    // So you have to this person variable but if I try to update that to something
+    // like person = { name: 'Karuna'} in the console:
+    // I will see Uncaught TypeError: Assignment to constant variable.
+    // However the properties of const can change like:
+    // person.name = 'Karuna';
+
+    // If you want to freeze everything you can use Object.freeze(),it now part of ES6
+    const wes = Object.freeze(person);
     </script>
   </body>
 </html>
