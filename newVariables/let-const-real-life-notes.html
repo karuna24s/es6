@@ -23,7 +23,54 @@
 
       // With let and const variables, we don't need an iife because let and const
       // variables are block scoped.
-      const name = 'wes';
+      // const name = 'wes';
+
+      // If I were to open a set of curly braces and add the const variable in it:
+      // {
+      //   const name = 'wes';
+      // }
+      // that is a block and now it is going to be scoped to that block. In the console,
+      // if you type in name you will get an empty string. However if you add a console.log(name):
+      {
+        const name = 'wes';
+        console.log(name);
+      }
+      // the console will return wes. So with let and const you don't need to use an iife.
+
+      // Another problem with var that let and const will solve is with the for loop:
+      // for(var i = 0; i < 10; i++) {
+      //   console.log(i);
+      // }
+      // In the console, we get 0 through 9. Now problems that arise here are two things:
+      // 1. If I type i in the console: it returns 10. So we have global variable that has leaked out
+      // into the window or its parent scope which is something necessarily want. i is just
+      // a placeholder variable we need inside this loop.
+      // 2. Let's say you were doing something inside of this loop: Maybe run something like an
+      // AJAX request or add in a setTimeout:
+      // for(var i = 0; i < 10; i++) {
+      //   console.log(i);
+      //   setTimeout(function() {
+      //     console.log('The number is ' + i);
+      //   }, 1000)
+      // }
+      // So it will run in the console after a second. And all of them is ten because
+      // console.log(i) runs immediately and reference whatever i is however after 1
+      // second this entire loop has already gone through every iteration that it needs
+      // to and the variable i is being overwritten every single time and the problem
+      // with that is by the time the first setTimeout runs i variable is already at 10,
+      // we don't have any way to reference it. Similarly if you had an AJAX request where
+      // you were looping through them there is no good way other than using an iife to
+      // reference what that i variable was at the time of running not at the current time.
+      // So one quick way we can fix that is change var to let and what we know about let is that
+      // let is block scoped.
+      for(let i = 0; i < 10; i++) {
+        console.log(i);
+        setTimeout(function() {
+          console.log('The number is ' + i);
+        }, 1000)
+      }
+      // So now in the console, you will see 0 through 9 and not getting 10 ten times. We are
+      // getting as i was declared each and everytime.
     </script>
   </body>
 </html>
