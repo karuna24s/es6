@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>let and const real world</title>
+  </head>
+  <body>
+    <script>
+      // Replacing an iife - Immediately-Invoked Function Expression which is a
+      // function that runs itself immediately and it creates a scope where
+      // nothing is going to leak into it's parent scope (global scope of the window).
+      // var name = 'wes';
+      // This may work in the console right now but if there are third party javascript
+      // name attributes it can get messy so to avoid that you create an iife
+      // which is a function that runs immediately and you put your variables inside of that
+      // function:
+      // (function() {
+      //   var name = 'wes';
+      //   // if you want to access this variable need to add:
+      //   console.log(name);
+      // })();
+      // Now because of the iife this variable is no longer leaking into the global scope.
+
+      // With let and const variables, we don't need an iife because let and const
+      // variables are block scoped.
+      const name = 'wes';
+    </script>
+  </body>
+</html>
