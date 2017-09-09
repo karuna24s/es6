@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>let and const real world</title>
+  </head>
+  <body>
+    <script>
+      // using var declare pizza to equal deep dish and add a console.log(pizza); Everything works!
+      // var pizza = 'Deep Dish 🍕🍕🍕';
+      // console.log(pizza);
+      // Well what happens if you add console.log(pizza); before we use var to declare pizza to
+      // equal deep dish:
+      // console.log(pizza);
+      // var pizza = 'Deep Dish 🍕🍕🍕';
+      // console.log(pizza); will return undefined because with var variables you can access them
+      // as they are defined, before they are defined, you cannot access the actual value of them
+      // (deep dish) but you can access the fact that the variable has been created before.
+
+      // Now if I change that to const or let you will now see an Uncaught
+      // ReferenceError: pizza is not defined in the console because so that is an actual
+      // error and break your code.
+      console.log(pizza);
+      const pizza = 'Deep Dish 🍕🍕🍕';
+      // temporal dead zone is where you cannot access the variable before it is defined.
+
+      // Use const by default (if you want keep it the same value). Only use let if
+      // rebinding is needed (if you need to update the value of your variable).
+      // var shouldn't be used in ES6.
+
+    </script>
+  </body>
+</html>
