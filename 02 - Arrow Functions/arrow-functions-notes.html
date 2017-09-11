@@ -6,6 +6,56 @@
   </head>
   <body>
     <script>
-    </script>
+      // Arrow functions have three main benefits:
+      //  - More concise than regular functions.
+      //  - They have implicit returns, which allow as to write minimal code.
+      //  - Doesn't rebind the value of this when you use an arrow function inside another function,
+      //    which comes in handy for click event handlers.
+
+      // Names array and we want to add bos to the end of each of these names:
+      const names = ['wes', 'kait', 'lux'];
+      // Normally, we would do something like this:
+      const fullNames = names.map(function(name) {
+        return `${name} bos`;
+      });
+      // console.log(fullNames);
+      // How to convert it to an arrow function?
+      const fullNames2 = names.map((name) => {
+        return `${name} bos`;
+      });
+      // console.log(fullNames2);
+      // Another way we can convert it to an arrow function especially if you
+      // have one parameter:
+      const fullNames3 = names.map(name => {
+        return `${name} bos`;
+      });
+      // console.log(fullNames3);
+      // What else can we do with this? We can do an implicit return. Explicit return means
+      // when you explicitly write the word return (actually right the word return) for what
+      // you are returning but lot of these callback functions we write in javaScript are just
+      // one liners where we just return something like so:
+      const fullNames4 = names.map(name => `${name} bos`);
+      // When you delete the curly brackets it will be an implicit return in which we don't need
+      // to specify that we are returning name bos it will just assume that we are doing so.
+      // console.log(fullNames4);
+      // If you don't have any arguments in this case you need pass an empty parantheses:
+      const fullNames5 = names.map(() => `cool bos`);
+      // console.log(fullNames5);
+      // Another thing we need to know about arrow functions is that arrow functions are
+      // always anonymous functions, which means
+
+      // named function:
+      // function sayMyName(name) {
+      //   alert(`Hello ${name}`);
+      // }
+      // Benefits of having a named function is that if you have a stacked trace which means if
+      // you have an error and you want to figure where did this go wrong it will mention the name
+      // of the function in the console. So if you want to use an arrow function, you cannot name
+      // them. You can put them in a variable like:
+      const sayMyName = (name) => { alert(`Hello ${name}!`) }
+
+      sayMyName('Karuna');
+      // So that is a function declaration there. The thing we need to know is that it is an
+      // anonymous function and it will not give us very good stacked traces.
   </body>
 </html>
