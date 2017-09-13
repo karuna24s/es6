@@ -6,11 +6,28 @@
   </head>
   <body>
     <script>
-
+      // Some Examples of Arrow functions:
       const race = '100m Dash';
       const winners = ['Hunter Gath', 'Singa Song', 'Imda Bos'];
+      // // object:
+      // {
+      //   name: 'Wes Bos',
+      //   place: 1,
+      //   race: race
+      // }
+      // use map to return an object from each of the winners:
+      // console.table(win) prints out a table of win
+      // instead of using race: race (this can be repetitive you can just use race
+      // this is an es6 feature)
+      // this is an example of doing an implicit with an object literal:
+      const win = winners.map((winner, i) => ({name: winner, race, place: i + 1}));
 
-      
+      const ages = [23, 62, 45, 234, 2, 62, 234, 62, 34];
+      // we want to filter this list for people who are older than 60 years old.
+
+      const old = ages.filter(age => age >= 60);
+      console.log(old);
+
     </script>
   </body>
 </html>
