@@ -61,7 +61,69 @@
     </div>
 
     <script>
-      
+      // this keyword does not get rebound.
+      // Example:
+      // We have a div with a class of box. When you click on this box what will happen:
+      // A two stage animation:
+      // You click the box, it expands/grows and it animates wes bos on the left.
+      // The way it is working: I first add a class of opening to it (which expands it)
+      // and then I add a class of open to it which brings in the h2 and p tag.
+
+      // select an element:
+      // const box = document.querySelector('.box');
+      // check if the box is being logged:
+      // console.log(box);
+      // add eventListener..when a user clicks the following function will occur:
+      // box.addEventListener('click', function() {
+      //   // adding this console.log to see what happens when you click on the box:
+      //   // so console.log(this) is equal to the box (this is equal to the box)
+      //   // if you use an arrow function instead of a regular function console.log(this)
+      //   // will return window...meaning when you use an arrow function the value of this is
+      //   // not rebound inside of that function. It is just inherited based on what the parent
+      //   // scope is.
+      //   // So what is the parent scope of this? Window
+      //   // So in this case I do not want an arrow function because I need the keyword to reference
+      //   // the actual box that got clicked.
+      //   // console.log(this);
+      //   // so this expands the box:
+      //   this.classList.toggle('opening');
+      //   // which brings in the text inside the box
+      //   // setTimeout(function(){
+      //     // receive an error: Uncaught TypeError: Cannot read property 'toggle' of undefined
+      //     // so add in a console.log(this.classList) and realized the console.log(this.classList)
+      //     // returns an undefined
+      //     // try console.log(this);
+      //     // console.log(this) return window which means because we entered a new function and this
+      //     // function has not been bound to anything which means that if it is not bound to anything
+      //     // it is going to be bound to the window
+      //     // what we need to do is change the setTimeout function to an arrow function because when
+      //     // you have an arrow function it does not change the value of this, it inherits the value
+      //     // of this from the parent. We don't have to worry about the scope
+      //   setTimeout(() =>{
+      //     // console.log(this);
+      //     this.classList.toggle('open');
+      //   }, 500);
+      // });
+
+      // being that is works we are going to tweek it a little bit as when you toggle it open it
+      // adds a class of opening then after 500 milliseconds it adds the class open when you
+      // close it down you want to be the opposite:
+      const box = document.querySelector('.box');
+      box.addEventListener('click', function() {
+        // make two variables:
+        let first = 'opening';
+        let second = 'open';
+        // if the first stage has already occured, then we want to switch the order
+        // of what happens:
+        if(this.classList.contains(first)) {
+          [first, second] = [second, first];
+        }
+
+        this.classList.toggle(first);
+        setTimeout(() => {
+          this.classList.toggle(second);
+        }, 500);
+      });
     </script>
 
   </body>
