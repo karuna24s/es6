@@ -6,7 +6,57 @@
   </head>
   <body>
     <script>
-      
+      // Default Arguments in JS
+      // function calculateBill(total, tax, tip) {
+      //   // this function will take in three things
+      //   return total + (total * tax) + (total * tip);
+      // }
+      //
+      // const totalBill = calculateBill(100, 0.13, 0.15);
+      // console.log(totalBill);
+
+      // Now what happens if we want to assume 13% tax rate and assume 15% tip and
+      // remove the tax rate and tip:
+      // const totalBill = calculateBill(100);
+      // console.log(totalBill);
+      // we will get an error in the console: NAN since we are doing match with things
+      // that are not passed in (tax, tip)
+      // what is the value of tax and tip when it is passed in this example...it will
+      // be undefined.
+      // what we would normally do is:
+      // function calculateBill(total, tax, tip) {
+      //   // this function will take in three things
+      //   if(tax === undefined) {
+      //     tax = 0.13;
+      //   }
+      //   if(tip === undefined) {
+      //     tip = 0.15;
+      //   }
+      //   return total + (total * tax) + (total * tip);
+      // }
+      //
+      // const totalBill = calculateBill(100);
+      // console.log(totalBill);
+      // now it works fine but this is a whole lot of code that we need to add.
+
+      // Now with es6 all we have to do is set it when we define our functions:
+      // function calculateBill(total, tax = 0.13, tip = 0.15) {
+      //   // this function will take in three things
+      //   return total + (total * tax) + (total * tip);
+      // }
+      //
+      // const totalBill = calculateBill(100);
+      // console.log(totalBill);
+
+      // now this works what if I want to pass only the total amount and the tip:
+      function calculateBill(total, tax = 0.13, tip = 0.15) {
+        // this function will take in three things
+        return total + (total * tax) + (total * tip);
+      }
+
+      const totalBill = calculateBill(100, undefined, 0.25);
+      console.log(totalBill);
+
     </script>
   </body>
 </html>
