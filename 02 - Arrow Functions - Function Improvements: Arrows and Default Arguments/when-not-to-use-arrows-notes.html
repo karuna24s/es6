@@ -12,7 +12,56 @@
     <button id="pushy">Push Me</button>
 
     <script>
-      
+      // When you really need `this`
+      // (otherwise you will access the window, when you run console.log(this);)
+      const button = document.querySelector('#pushy');
+      button.addEventListener('click', function() {
+        console.log(this);
+        this.classList.toggle('on');
+      });
+
+      // When you need a method to bind to an object
+      // (as person.score returns undefined and
+      // when you add console.log(this) you will get the window)
+      const person = {
+        points: 23,
+        score() {
+          console.log(this);
+          this.points++;
+        }
+      }
+
+      // When you need to add a prototype method
+      // (otherwise Car.prototype.summarize (subie.summarize)
+      // will return "This car is a undefined in the colour undefined")
+      class Car {
+        constructor(make, colour) {
+          this.make = make;
+          this.colour = colour;
+        }
+      }
+
+      const beemer = new Car('bmw', 'blue');
+      const subie = new Car('Subaru', 'white');
+
+      Car.prototype.summarize = function() {
+         return `This car is a ${this.make} in the colour ${this.colour}`;
+      };
+
+      // When you need arguments object
+      // (we don't have access to arguments object when we have an arrow function)
+      // This is helpful when you want to run a function
+      // Arguments is a keyword in JS that will give us an array of everything that
+      // was passed in.
+      const orderChildren = function() {
+        const children = Array.from(arguments);
+        return children.map((child, i) => {
+          return `${child} was child #${i + 1}`;
+        })
+        console.log(arguments);
+      }
+
+
     </script>
   </body>
 </html>
