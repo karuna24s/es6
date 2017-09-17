@@ -6,7 +6,31 @@
   </head>
   <body>
     <script>
-
+    // In JS, if you want to put a a variable inside of a string, it can be a pain if
+    // you have to stop the string concatenate on the variable and then open your string
+    // again and keep going. Every other language has the abilty to drop your variables
+    // inside of a string and just interpolate like that. Not in JS, so what might happen
+    // you might forget the closing which could lead to an error. We can not fix all that
+    // with template strings or template literals. In JS we have double quotes, single quotes
+    // and now because of es6 we have back ticks.
+      // var name = 'Snickers';
+      // var age = 2;
+      // var sentence = 'My dog ' + name + ' is ' + age * 7 + ' years old.';
+    // So we are first going to change all the var variables into const variables (as they do not
+    // change):
+    // const name = 'Snickers';
+    // const age = 2;
+    // const sentence = 'My dog ' + name + ' is ' + age * 7 + ' years old.';
+    // Next we will convert const sentence into a template string:
+    // Step one use back ticks instead of single quotes.
+    // then add ${} were you see a variable that you want to interpolate
+    // you can also do js just straight away inside of these curly brackets (you
+    // can pop in a variable or a function, you can add straight js like calculating
+    // age * 7)
+    const name = 'Snickers';
+    const age = 2;
+    const sentence = `My dog ${name} is ${age * 7} years old.`;
+    console.log(sentence);
     </script>
   </body>
 </html>
