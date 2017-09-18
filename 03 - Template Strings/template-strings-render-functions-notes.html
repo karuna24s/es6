@@ -6,6 +6,44 @@
   </head>
   <body>
     <script>
+      // What happens when your data gets more complex. Nesting inside of Nesting
+      // gets more hairy and hard to maintain your code. So you can create a
+      // render function: Taken that from React where create separate components
+      // that will handle different complex data in different components in our
+      // markup.
+      // What if I want to implement this array of keywords that is nested inside
+      // of the beer variable: Run a render function where you can pass the array
+      // Next make a function called :
+
+      const beer = {
+        name: 'Belgian Wit',
+        brewery: 'Steam Whistle Brewery',
+        keywords: ['pale', 'cloudy', 'spiced', 'crisp']
+      };
+
+      // Next make a function called renderKeywords which takes in the keywords
+      // and it will return to us a unordered list of keywords. For each keyword
+      // I want to add inside the template string keywords map function which will
+      // give keyword which will return another template string that has the keyword
+      // inside of it
+      function renderKeywords(keywords) {
+        return `
+          <ul>
+            ${keywords.map(keyword => `<li>${keyword}</li>`).join('')}
+          </ul>
+        `;
+      }
+
+      const markup = `
+        <div class="beer">
+          <h2>${beer.name}</h2>
+          <p class="brewery">${beer.brewery}</p>
+          ${renderKeywords(beer.keywords)}
+        </div>
+      `;
+
+      document.body.innerHTML = markup;
+
     </script>
   </body>
 </html>
