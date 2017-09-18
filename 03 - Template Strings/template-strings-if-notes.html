@@ -6,7 +6,25 @@
   </head>
   <body>
     <script>
+      // An example where we need an if statement inside of our template.
+      // If we want to add featuring: We could use a ternary operator: if this
+      // then that otherwise nothing: check out line 22
+      const song = {
+        name: 'Dying to live',
+        artist: 'Tupac',
+        featuring: 'Biggie Smalls'
+      };
 
+      const markup = `
+        <div class="song">
+          <p>
+            ${song.name} - ${song.artist}
+            ${song.featuring ? `(Featuring ${song.featuring})` : ''}
+          </p>
+        </div>
+      `;
+
+      document.body.innerHTML = markup;
     </script>
   </body>
 </html>
