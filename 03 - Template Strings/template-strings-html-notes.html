@@ -6,7 +6,33 @@
   </head>
   <body>
     <script>
+    // Another feature of template strings is the ability to do multiple lines
+    // without any funny business like adding new lines:
+    // var text = "hello there, \
+    //  how are you \
+    // ";
+    // Instead you use template strings:
+      const person = {
+        name: 'Wes',
+        job: 'Web Developer',
+        city: 'Hamilton',
+        bio: 'Wes is a really cool guy that loves to teach web developement!',
+      };
 
+      const markup = `
+        <div class="person">
+          <h2>
+            ${person.name}
+            <span class="job">${person.job}</span>
+          </h2>
+          <p class="location">${person.city}</p>
+          <p class="bio">${person.bio}</p>
+        </div>
+      `;
+
+      console.log(markup);
+      // take this template and add it in an existing element
+      document.body.innerHTML = markup;
     </script>
   </body>
 </html>
