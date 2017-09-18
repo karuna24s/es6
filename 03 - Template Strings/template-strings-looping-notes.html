@@ -6,7 +6,34 @@
   </head>
   <body>
   <script>
-    
+  // Another amazing feature of template strings is that you can nest them inside
+  // each other and what does that mean: what if I have an array of dogs and loop
+  // over and give myself a list item for each one
+    const dogs = [
+      { name: 'Snickers', age: 2 },
+      { name: 'Hugo', age: 8 },
+      { name: 'Sunny', age: 1 }
+    ];
+
+    // Nest template strings inside of this ul tag: add a map function and use
+    // an arrow function and for each dog you can return a string (template string)
+    // with a li tag, to get rid of the comma, add a .join method
+
+    const markup = `
+      <ul class="dogs">
+        ${dogs.map(dog => `
+          <li>
+            ${dog.name}
+            is
+            ${dog.age * 7}
+          </li>`).join('')}
+      </ul>
+    `;
+
+    document.body.innerHTML = markup;
+    console.log(markup);
+
+    // If you need looping inside the template string, you can use map function.
   </script>
   </body>
 </html>
