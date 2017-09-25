@@ -11,9 +11,32 @@
   </head>
   <body>
     <script>
+      // const name = 'Snickers';
+      // const age = 100;
+      // const sentence = `My dog's name is ${name} and he is ${age} years old`;
+      // console.log(sentence);
+
+      // Another feature that comes along with template literal is ability to tag
+      // them: An example is running the sentence variable through a function and
+      // rather than have the browser put in the variables for us, we can have
+      // control over how this string is made.
+
+      // The way a taged template works is first you make a function called
+      // highlight and you take name of the function that you want to run against
+      // the string and you put name of the function right in front of the template.
+      // So this tagging it with a function name what is going to happen is that
+      // the browser is going to run this function. It is going to provide it with all
+      // the information about the string, all the pieces that the person typed as well
+      // as well as the variables that get passed in and whatever we return from this
+      // function is what the sentence variable is actually going to be. So it sort
+      // of like a step in between. Before this function gets put into the string,
+      // we have the ability to modify it in any given way.
+      function highlight() {
+        return 'cool';
+      }
       const name = 'Snickers';
       const age = 100;
-      const sentence = `My dog's name is ${name} and he is ${age} years old`;
+      const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
       console.log(sentence);
     </script>
   </body>
