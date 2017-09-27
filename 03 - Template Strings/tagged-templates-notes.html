@@ -31,13 +31,56 @@
       // function is what the sentence variable is actually going to be. So it sort
       // of like a step in between. Before this function gets put into the string,
       // we have the ability to modify it in any given way.
-      function highlight() {
-        return 'cool';
+      // this function will take in the string and the value
+      // ...values is es6 syntax and means that that the function will take in the
+      // the rest of the values that are passed into the argument and put them into
+      // an array
+      function highlight(strings, ...values) {
+        // this will take in the string that (that is part of the sentence variable
+        // and return cool.
+        // return 'cool';
+        // add a debugger which will stop the function from running...opens up dev
+        // chrome tools. This shows us a couple of things...First the local scope
+        // of this function which has strings and values. Strings is an array of
+        // three things : My dog's name is, and he is, and years old (breaks up
+        // the string into the biggest pieces it can until a variable has interrupted
+        // it). The second thing we get is an array of values, which we pass in two
+        // values: Snickers and 100. So the array of strings will always be one bigger
+        // than the actual values array even if I were to add another variable like
+        // const gender = 'male'; to the end of string as shown below. The array of
+        // strings will give you an additional string which is an empty string.
+        // debugger;
+        // The idea behind this is that we can use this function to build the string
+        // ourselves rather than relying the browser to do it.
+        // Now we need to create a string..an empty string..and we are using let..
+        // because we will be updating the string. And we want to loop over the first
+        // strings array and then add each value to the string.
+        let str = '';
+        // pass in string and an index of the actual element and then we will
+        // concatenate the str to each string + index of each value. So that will
+        // say give me the first value of the string and the first value of the array.
+        strings.forEach((string, i) => {
+          // check if values is undefined by adding || ''
+          // str += string + (values[i] || '');
+          // Now we change this so that any value gets passed in gets wrapped into a span
+          // tag and we can use CSS to highlight it. We want to highlight the name and
+          // actual age. So we will use template tags instead of concatenation here.
+          // contenteditable means you can make the content editable.
+          str += `${string} <span contenteditable class="hl">${values[i] || ''}</span>`;
+        });
+        // return str
+        return str;
       }
       const name = 'Snickers';
       const age = 100;
-      const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
+      // const gender = 'male';
+      const sentence = highlight`My dog's name is ${name} and he is ${age} years old`
+        // ${gender}`;
+      document.body.innerHTML = sentence;
       console.log(sentence);
+      // The main idea behind the template tagged strings that you have a string, you
+      // pass in the regular string what you want, and you get all the pieces that you
+      // to return in some modified data.
     </script>
   </body>
 </html>
