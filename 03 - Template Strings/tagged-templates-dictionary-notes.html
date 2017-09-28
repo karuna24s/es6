@@ -19,11 +19,21 @@
       const dict = {
         HTML: 'Hyper Text Markup Language',
         CSS: 'Cascading Style Sheets',
-        JS: 'JavaScript'
+        JS: 'JavaScript',
+        RUBY: 'Ruby'
       };
 
-      const first = 'Wes';
-      const last = 'Bos';
+      const first = 'Karuna';
+      const last = 'Sehgal';
+      // I don't have a variablt for HTML, CSS and JS. However I can interpolate
+      // it byt passing it into a string
+      const sentence = `My name is ${first} ${last} and I love to code ${'HTML'},
+        ${'CSS'}, ${'JS'}, and ${'RUBY'}.`;
+
+      const bio = document.querySelector('.bio');
+      const p = document.createElement('p');
+      p.innerHTML = sentence;
+      bio.appendChild(p);
 
     </script>
   </body>
