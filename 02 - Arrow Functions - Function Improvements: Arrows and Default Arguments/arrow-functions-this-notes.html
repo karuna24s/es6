@@ -98,14 +98,14 @@
       //     // it is going to be bound to the window
       //     // what we need to do is change the setTimeout function to an arrow function because when
       //     // you have an arrow function it does not change the value of this, it inherits the value
-      //     // of this from the parent. We don't have to worry about the scope
+      //     // of this from the parent. We don't have to worry about the scope changing
       //   setTimeout(() =>{
       //     // console.log(this);
       //     this.classList.toggle('open');
       //   }, 500);
       // });
 
-      // being that is works we are going to tweek it a little bit as when you toggle it open it
+      // being that it works we are going to tweek it a little bit as when you toggle it open it
       // adds a class of opening then after 500 milliseconds it adds the class open when you
       // close it down you want to be the opposite:
       const box = document.querySelector('.box');
