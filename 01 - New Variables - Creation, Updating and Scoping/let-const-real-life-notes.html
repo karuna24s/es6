@@ -43,7 +43,7 @@
       // }
       // In the console, we get 0 through 9. Now problems that arise here are two things:
       // 1. If I type i in the console: it returns 10. So we have global variable that has leaked out
-      // into the window or its parent scope which is something necessarily want. i is just
+      // into the window or its parent scope which is not something necessarily want. i is just
       // a placeholder variable we need inside this loop.
       // 2. Let's say you were doing something inside of this loop: Maybe run something like an
       // AJAX request or add in a setTimeout:
