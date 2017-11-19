@@ -19,7 +19,7 @@
       // remove the tax rate and tip:
       // const totalBill = calculateBill(100);
       // console.log(totalBill);
-      // we will get an error in the console: NAN since we are doing match with things
+      // we will get an error in the console: NAN since we are doing math with things
       // that are not passed in (tax, tip)
       // what is the value of tax and tip when it is passed in this example...it will
       // be undefined.
@@ -48,7 +48,7 @@
       // const totalBill = calculateBill(100);
       // console.log(totalBill);
 
-      // now this works what if I want to pass only the total amount and the tip:
+      // now this works what if I want to pass only the total amount and the tip amount:
       function calculateBill(total, tax = 0.13, tip = 0.15) {
         // this function will take in three things
         return total + (total * tax) + (total * tip);
