@@ -16,19 +16,73 @@
     </div>
 
     <script>
+      // An example of when tagged templates can come in handy. It is when you
+      // want to add an abbreviation tag to a sentence.
+
+      // Dictionary object:
       const dict = {
         HTML: 'Hyper Text Markup Language',
         CSS: 'Cascading Style Sheets',
-        JS: 'JavaScript',
-        RUBY: 'Ruby'
+        JS: 'JavaScript'
       };
+      // create addAbbreviations function here, where I will create a new array
+      // of values that if there is an abbreviation, I want wrapped in an
+      // abbreviated tag.
+      function addAbbreviations(strings, ...values) {
+        // create a variable called abbreviated and I am going to take regular
+        // values and map over them and return a new array of values.
+        // for each value..now we are going to check if there is a value in the
+        // dictionary.
+        const abbreviated = values.map(value => {
+          // if the dictionary has an item for that specific value,then we will
+          // return the `abbr` tag and the title of the `abbr` tag is going to
+          // be the dictionary item with that key of "HTML, CSS, JS, or Ruby".
+          // Then inside of the abbreviation tag we are going to return the value
+          // there. So what that is going to give us if we console.log the abbreviated
+          // tag.
+          if(dict[value]) {
+            return `<abbr title="${dict[value]}">${value}</abbr>`
+          }
+          // otherwise we want to return the value.
+          return value;
+        });
+        // console.log(abbreviated);
+        // remember to add the addAbbreviations function before My name in the
+        // sentence variable.
+        // So now each of our values array is now abbr tags that have been
+        // created for us. Now that we are working with this abbr tag. We can
+        // take our strings array and start to piece it together.
+        // We are going to return strings.reduce(). The way that reduce works
+        // is that it will loop over each one and build the string as we go.
+        // Reduce takes two things, takes this function and it takes what you
+        // start with. We are going to start with an empty string, and then the
+        // actual function that we want to run is going to be an anonymous function,
+        // which gives us sentence, which is going to be whatever the previous
+        // one was. It is going to give us an actual string and the index for that
+        // one. I am going to use an arrow function with a block here. From that
+        // we return. We are going to build this together. We are going to take
+        // the existing sentence. This will be whatever was from the last iteration.
+        // We are going to tack on the string. Do not need a space between sentence
+        // and string because the spaces that are in the string will come along
+        // in the string itself. Then we want to tack on the abbreviated, because
+        // we have this array here. Square bracket i or nothing. What that does
+        // when you check the html page in the browser, and you hover over the HTML,
+        // CSS, JS works, you will see the what HTML, CSS, JS, stands for. If I
+        // inspect that. Now our string here has been created with abbreviation tag.
+        // That is a great example of when you might want to use it. You just have to
+        // tack on this addAbbreviations function and it is goingt externally go and
+        // look up your dictionary.
+        return strings.reduce((sentence, string, i) => {
+          return `${sentence}${string}${abbreviated[i] || ''}`
+        }, '');
+      }
 
       const first = 'Karuna';
       const last = 'Sehgal';
       // I don't have a variable for HTML, CSS and JS. However I can interpolate
-      // it byt passing it into a string
-      const sentence = `My name is ${first} ${last} and I love to code ${'HTML'},
-        ${'CSS'}, ${'JS'}, and ${'RUBY'}.`;
+      // it by passing it into a string
+      const sentence = addAbbreviations`My name is ${first} ${last} and I love to code ${'HTML'},
+        ${'CSS'}, and ${'JS'}.`;
 
       const bio = document.querySelector('.bio');
       const p = document.createElement('p');
