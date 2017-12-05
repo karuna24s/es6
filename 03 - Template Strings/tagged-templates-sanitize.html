@@ -28,14 +28,14 @@
       // something like that, and the user had this saved in their database. They
       // said I love to do even and they inserted an image to Unsplash, which is
       // allowed. You can insert an image into your bio, but they do the malicious
-      // thing here where they say "onload="alert('you got hacked')", so when This
+      // thing here where they say "onload="alert('you got hacked')", so when this
       // image loads, run this JavaScript. And that is the big no-no. You cannot let
       // your users run JavaScript on your page because then they could drain your
       // bank account, or delete your thing or post as you are there. They could do
       // anything. Imagine if you let someone run JavaScript on Facebook. You could
       // unfriend everyone, or you could look at all of their messages, or send
       // nasty messages on their behalf.
-      // So here I have taken about me and I just popped it into the HTML and then I set
+      // So here I have taken aboutMe and I just popped it into the HTML and then I set
       // it into our bio. I am taking it, putting in a refresh and I get this message.
       // You got hacked. That is called an XSS, a cross site scripting, where we let
       // someone else who inputted this data run JavaScript on our page. That's really
@@ -47,9 +47,30 @@
       // kinds of options in here in terms of what tags are allowed and aren't allowed.
       // There are all kinds of sanitize libraries here. You could make a sanitized tag
       // template and use this library inside of it.
+      // Create a function called sanitize, which is going to take in the strings and
+      // values.
+
+      function sanitize(strings, ...values) {
+        // Add a reduce function. It takes in a function and what we start with,
+        // and our function is going to be an arrow function that gives us the, I'm
+        // going to say prev, next. Prev is what was the last iteration. Next is
+        // what is the current iteration, and add an index (i). Then we are just
+        // going to return a string that tacks all those things together. We got
+        // prev, next, values[i] or nothing
+        const dirty = strings.reduce((prev, next, i) => `${prev}${next}${values[i]
+          || ''}`, '');
+        return DOMPurify.sanitize(dirty);
+      }
 
       const first = 'Wes';
-      const aboutMe = `I love to do evil <img src="http://unsplash.it/100/100?random"
+      // Next you have sanitize and put it in front, tag that template. We still
+      // get hacked. What we can do instead create a const variable called dirty
+      // in the sanitize function and assign to the reduce functon. This string
+      // is dirty becaue it still has this onload/iframe. But you can return this
+      // library here called DOMPurify.sanitize and we sanitize the dirty HTML.
+      // Now if you check out the browser. If we inspect the element and look at
+      // the img tag, you can see that onload has been removed.
+      const aboutMe = sanitize`I love to do evil <img src="http://unsplash.it/100/100?random"
       onload="alert('you got hacked');" />`;
 
       const html = `
@@ -59,6 +80,8 @@
 
       const bio = document.querySelector('.bio');
       bio.innerHTML = html;
+      // Overall this was an example of how you could create a tagged template, so
+      // that anytime you are creating HTML you could sanitize something.
     </script>
   </body>
 </html>
