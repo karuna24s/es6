@@ -18,14 +18,45 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/0.8.2/purify.min.js"></script>
     <script>
-      const first = 'Wes';
-      const aboutMe = `I love to do evil <img src="http://unsplash.it/100/100?random" onload="alert('you got hacked');" />`;
+      // These last couple of examples I have been creating HTML and inserting it
+      // right into the DOM. If you have any security background, you are probably
+      // thinking that I should sanitize that data before I put it into the DOM.
+      // Essentially when you get data from a user, whenever you are displaying data
+      // from a user, you must make sure that the user is not trying to insert an
+      // iframe or an image, or to do an XSS. Here an example. Let's assume I took
+      // this first name in the aboutMe. I got that from a database or an API, or
+      // something like that, and the user had this saved in their database. They
+      // said I love to do even and they inserted an image to Unsplash, which is
+      // allowed. You can insert an image into your bio, but they do the malicious
+      // thing here where they say "onload="alert('you got hacked')", so when This
+      // image loads, run this JavaScript. And that is the big no-no. You cannot let
+      // your users run JavaScript on your page because then they could drain your
+      // bank account, or delete your thing or post as you are there. They could do
+      // anything. Imagine if you let someone run JavaScript on Facebook. You could
+      // unfriend everyone, or you could look at all of their messages, or send
+      // nasty messages on their behalf.
+      // So here I have taken about me and I just popped it into the HTML and then I set
+      // it into our bio. I am taking it, putting in a refresh and I get this message.
+      // You got hacked. That is called an XSS, a cross site scripting, where we let
+      // someone else who inputted this data run JavaScript on our page. That's really
+      // dangerous. The solution to this is to sanitize your HTML. That's another place
+      // you could use the tagged template. In creating all this HTML here, I have all
+      // kinds of inputs from a user. But before I put it into my HTML, it's probably
+      // a good idea to run it through a sanitizer. I have loaded it in this library
+      // called DOMPurify. It is a library that we use to sanitize. You can have all
+      // kinds of options in here in terms of what tags are allowed and aren't allowed.
+      // There are all kinds of sanitize libraries here. You could make a sanitized tag
+      // template and use this library inside of it.
 
-      const html = sanitize`
+      const first = 'Wes';
+      const aboutMe = `I love to do evil <img src="http://unsplash.it/100/100?random"
+      onload="alert('you got hacked');" />`;
+
+      const html = `
         <h3>${first}</h3>
         <p>${aboutMe}</p>
       `;
-      
+
       const bio = document.querySelector('.bio');
       bio.innerHTML = html;
     </script>
