@@ -15,8 +15,11 @@
       const colour = 'Royal Blue';
       // Strings in ES6 come with four new methods that are really useful, help
       // us write more readable code, as well as reduce our reliance on using
-      // RegExp for certain things. RFB stands for react for beginners. What I
-      // want to confirm is does the string start with it? We can just take the
+      // RegExp for certain things. RFB stands for react for beginners.
+
+      // .startsWith()
+
+      // What I want to confirm is does the string start with it? We can just take the
       // course, if it starts with RFB. In the console you can type in
       // course.startsWith('RFB'); That is going to show me true because it does
       // start with it. If I did rfb ... lowercase, it says false. There is no
@@ -24,19 +27,108 @@
       // still need you use a RegExp.
       // One other thing that startsWith will do it will allow you to skip a
       // certain number of characters and start looking at it. Example with this
-      // flightNumber here, I want to see if it starts with AC. It's false,
-      // because, it starts with 20=AC
-
-      // .startsWith()
+      // flightNumber here, I want to see if it starts with AC. Type the following
+      // line in the console: flightNumber.startsWith('AC'); and it will return
+      // false, because, it starts with 20-. Sometimes we have these SKU numbers,
+      // when they start with a bunch of characters and then it gets to actually
+      // what we want. So what you can do is run flightNumber.startsWith('AC', 3);
+      // (which means start after 3 characters) in the console. And it will
+      // return true because it ignores the first three and starts at AC and checks
+      // against that.
 
       // course.startsWith('RFB');
-      // flightNumber.startsWith('AC');
+      // flightNumber.startsWith('AC', 3);
 
       // .endsWith()
 
+      // endsWith works fairly similar. Here is an example where have jz at the
+      // the end of the flightNumber variable and I want to know to confirm in the
+      // console flightNumber.endsWith('jz'); will return true or false. It will
+      // return true because it ends with jz. There is another option that we can
+      // pass endsWith, and I am going to use this accountNumber variable as an
+      // example here. In Canada we have business numbers which are nine digits
+      // long. Then you have a tax number which RT 0001, 0002. Of you need to know
+      // if this number is a tax number or a corporate tax number or is this a
+      // payroll number. So I need to check if this accountNumber endsWith RT and I
+      // want to ignore this 001 number. What you can do is the tell the account
+      // number to just take the first X number of characters and ignore the rest.
+      // In the consoe, type in accountNumber.endsWith('RT'), it return false. But
+      // if I can tell it to only take the first 11 numbers like so
+      // accountNumber.endsWith('RT', 11) and it will return true. Essentially
+      // you are going to take the first 11 numbers and ignore the rest and then
+      // see if ends with RT.
+
+      // flightNumber.endsWith('jz');
+      // accountNumber.endsWith('RT', 11)
+
       // .includes()
 
+      // includes() method will just check if that a character/element is
+      // anywhere in a string. According to MDN, the includes() method determines
+      // whether an array includes a certain element, returning true or false.
+      // Here is an an example where I want to check if my flightNumber includes
+      // AC. In the console, I would type in flightNumber.includes('AC'), it will
+      // return true. Again it is not case sensitive so you cannot do type in
+      // flightNumber.includes('ac'). It used be called .contains but is now
+      // called .includes because of some conflicts with the chrome and firefox
+      // dev tools.
+
+      // flightNumber.includes('AC');
+
       // .repeat()
+
+      // .repeat() allows you to take the string and repeat it. For example: If
+      // you type 'Karuna'.repeat(10); in the console, it will repeat Karuna ten
+      // times. How is .repeat() useful? Sometimes we have some words here like
+      // words here like I am going to take BMW X5 in royal blue (which are make,
+      // model, and color variables) and if I wanted to display them maybe in a
+      // terminal or something, but I want to right align them. How would that
+      // work? I would have to just put a whole bunch of padding in, depending on
+      // how long each string was and how much space will go in here. That is
+      // what is called a leftPad function and you can use .repeat() to code a
+      // nice little leftPad function. So create a leftPad function that will
+      // take in the string that we want to pad and the length that we wish to
+      // have it. I am going to set the length to a default of 20 characters.
+
+      function leftPad(string, length = 20) {
+        // we can return a string which we start with a little arrow, just
+        // to show us where we are and we need to then need to pad it with
+        // however many characters we need. We will take a space and repeat
+        // however many we need which will be the string of the length minus
+        // string.length. If string.length is 3, it is going to give us 17
+        // spaces that have been repeated, and then we just tack on the string.
+        return `→ ${' '.repeat(length - string.length)}${string}`;
+
+      }
+
+      // Next lets add a console.log to each of the three variables: make, model,
+      // and colour. We are leaving out the length because we are going to
+      // default it to 20, and it should just pass in the make, model, and color.
+      // If you refresh your broser and look at the console each of the three
+      // variables are perfecly aligned.
+
+      console.log(leftPad(make));
+      console.log(leftPad(model));
+      console.log(leftPad(colour));
+
+      // Another example that we can do is that we can take an ES6 template
+      // string and inside of that let's add a statement in the console where we
+      // take a string and multiply by it by like this:
+
+      // `${'Karuna' * 5}`
+
+      // It will return 'NAN'. 'NAN' is a value representing Not-A-Number.
+
+      // What happens when we call repeat on that statement 10 times and tack on
+      // :
+
+      // `${'Karuna' * 5}`.repeat(10) + ' is awesome.'
+
+      // It will return 'NANNANNANNANNANNANNANNANNANNAN is awesome.'
+
+      // Because what is happening here is that you are giving yourself
+      // essentially a string of Nan, and repeating it 10 times and tacking on
+      // is awesome on to the end.
 
     </script>
 
