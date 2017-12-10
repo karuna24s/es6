@@ -6,6 +6,24 @@
   </head>
   <body>
     <script>
+      // So I just learned about destructuring. But can I put all together into
+      // one major thing (object) ?
+
+      // Object Destructuring with variable renaming & default values
+      const { w: width = 400, h: height = 500 } = { w: 800 }
+
+      // So what is going on here and what are the variables that are being
+      // created? Let's check in the console. What are the variables that are
+      // being created? The variables that are being created are width and height.
+      // Why?? Because it is destructuring w and h. But it is renaming them to
+      // width and height. When I type in width, it returns and when I type in
+      // height it returns 500. So what is happening here is that it is
+      // destructuring width from the object on the right. It is going to take
+      // 800. Then it immediately renames itself to width. So it is going to be 800.
+      // Then height, what are these equals next to height and width, those are
+      // default values. Height, there is no h being passed at all, so h tries
+      // to destructure from the object in the right. It can't, so it falls back
+      // to 500 default and then renamed itself to height.
 
     </script>
   </body>
