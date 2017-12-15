@@ -6,8 +6,61 @@
   </head>
   <body>
     <script>
+      // Destructuring also works with arrays. Sometimes you have some data
+      // where it is based on it's index value. You want to get the first,
+      // and third index.
       const details = ['Wes Bos', 123, 'wesbos.com'];
-      
+      // this will get redundant.
+      // const name = details[0];
+      // const id = details[1];
+      // We can use destructuring instead. Add const [] instead of curly brackets
+      // because when you pull from an object, you use curly brackets to
+      // destructure. When you pull from an array, you use square brackets to
+      // destructure. When you pull from a map, you use curly brackets. When you
+      // pull from a set, you use square brackets.
+      // So that is going to take the first, second and third thing and make us
+      // a whole bunch of variables.
+      const [name, id, website] = details;
+      // add the following of code to check what happens in the console:
+      console.log(name, id, website);
+      // in the console we see: 'Wes Bos, 123, wesbos.com'
+      // So that is very helpful when you have index based stuff.
+
+      // It can also be helpful when you have a comma separated list or string.
+      // Let's say we are given some data in a string that looks like this:
+      const data = 'Basketball,Sports,90210,23,wes,bos,cool';
+      // So we have the item name, item category, item sku, and the item
+      // inventory we have left. We do know one thing that we can do if the
+      // data is perfectly separated by some sort of separator is we could say
+      // data.split(',') based on some sort of splitter. Then we got a good array.
+      // You can also destructure an array.
+      const [itemName, category, sku, inventory] = data.split(',');
+      // This is going to return an array and then just immediately we are
+      // going to destructure that array into it's own four variables that
+      // we have here. Let's add a console.log to check what happens in the
+      // console:
+      console.log(itemName, category, sku, inventory);
+      // In the console we will see 'Basketball Sports 90210 23'
+      // What happens if the data is not great and you have extra stuff on line
+      // 31 like wes,bos,cool. So there are three extra items. What happens
+      // when you destructure something that is not the same length as the
+      // actual array? Well nothing happens because it will just throw the
+      // extra items out.
+
+      // Sometimes you do want to get the rest of the them (the items). There is
+      // a helpful use case in destructuring with using the rest. Let's say I
+      // have a team and I want to know who is the captain, who is the assistant
+      // captain, who is the rest of the actual team.
+      // Make an array:
+      const team = ['Wes', 'Harry', 'Sarah', 'Keegan', 'Riker'];
+      // So I have a list of names. How would you destructure this into captain,
+      // assistant captain, and the rest of the players. Remember to add the
+      // rest operator: '...' and it gives you the rest of the players.Let's
+      // add a console.log to check what happens in the console:
+      const [captain, assistant, ...players] = team;
+      console.log(captain, assistant, ...players);
+      // In the console we will see 'Wes', 'Harry', 'Sarah', 'Keegan', 'Riker'
+
     </script>
   </body>
 </html>
