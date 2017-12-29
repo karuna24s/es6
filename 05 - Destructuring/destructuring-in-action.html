@@ -6,6 +6,46 @@
   </head>
   <body>
     <script>
+      // Let's take a look at an example where I can swap variables with
+      // destructuring. In this example we am building an application for a
+      // wrestling application. First I want to create a variable where there is
+      // one wrestler in the ring and one that is a backup wrestler.
+      let inRing = 'Hulk Hogan';
+      let onSide = 'The Rock';
+
+      // So they need to tag them each other. So what happens when you need to
+      // switch? The Rock is going in the ring and Hulk Hogan is going on the
+      // side. In the console, if you type inRing, it returns 'Hulk Hogan'. In
+      // the console, if you type in inRing = 'The Rock'. Now if you type in
+      // inRing inside the console, it will return 'The Rock' and if you type in
+      // onSide, it will also return 'The Rock'.
+
+      // In the past, I can make a temp variable to switch the other
+      // variables:
+      // var temp = inRing;
+      // inRing = onSide;
+      // onSide = temp;
+      // Now that they are totally switched, you could delete you temp variable.
+      // That's really hard to follow. That is hard to look at especially for
+      // someone who is not familiar with your code.
+
+      // With destructuring, I just swap them. I take an array (with both the
+      // variables, which we want to switch) and make them equal to another
+      // array (with both variables that are switched)
+
+      // So what will do? It is going to create an array of onSide, inRing
+      // and immediately destructure them into the opposite variables. Now you
+      // see why I  used let instead of const here, because I am actually
+      // updating the values of these variables. Let's take these inRing and
+      // onSide variables and console.log them beforehand and console.log them
+      // after I destructure them into the opposite variables.
+      console.log(inRing, onSide);
+      [inRing, onSide] = [onSide, inRing];
+      console.log(inRing, onSide);
+      // Now in the console you see Hulk Hogan The Rock and then The Rock Hulk
+      // Hogan. They have swapped themselves, without the need for a third swap
+      // temp variable.
+
     </script>
   </body>
 </html>
