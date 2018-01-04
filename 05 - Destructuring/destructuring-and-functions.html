@@ -6,6 +6,18 @@
   </head>
   <body>
     <script>
+    // There is a couple of other things we can do with destructuring and they
+    // are all related to functions. So this function is a convertCurrency
+    // function that takes an amount like 100 bucks and it is going to return
+    // an object that has US, pounds, Australian dollars and Mexican Bucks,
+    // pesos. We run it here with $100 Canadian and it is going to return to me
+    // this object here. When I console.log this object, we see that we have all
+    // values here.
+    // Previously, if I wanted to get the Australian dollars I would say
+    // hundo.AUD and I would say hundo.Mex to get the Mexican pesos. However,
+    // with destructuring, you can sort of return multiple values from a
+    // function. What I mean by is that you can't really return multiple values,
+    // but you can return an object and destructure the answer from that. 
       function convertCurrency(amount) {
         const converted = {
           USD: amount * 0.76,
