@@ -9,15 +9,33 @@
     // There is a couple of other things we can do with destructuring and they
     // are all related to functions. So this function is a convertCurrency
     // function that takes an amount like 100 bucks and it is going to return
-    // an object that has US, pounds, Australian dollars and Mexican Bucks,
-    // pesos. We run it here with $100 Canadian and it is going to return to me
-    // this object here. When I console.log this object, we see that we have all
-    // values here.
-    // Previously, if I wanted to get the Australian dollars I would say
-    // hundo.AUD and I would say hundo.Mex to get the Mexican pesos. However,
+    // an object that has USD, pounds, Australian dollars and Mexican Bucks,
+    // pesos. We run it here with $100 Canadian and it is going to return to us
+    // this object here. When we can console.log this object, we see that we have
+    // all the values here.
+    // Previously, if we wanted to get the Australian dollars we would say
+    // hundo.AUD and we would say hundo.Mex to get the Mexican pesos. However,
     // with destructuring, you can sort of return multiple values from a
-    // function. What I mean by is that you can't really return multiple values,
-    // but you can return an object and destructure the answer from that. 
+    // function. What we mean by that is you can't really return multiple values,
+    // but you can return an object and destructure the answer from that.
+    // Rather than just console.log(hundo); We are going to destructure the object
+    // immediately as it comes back, and say USD, GPD, AUD, and MEX. Now we
+    // should be able to take these values and console.log them individually,
+    // and you know that we get them. If we type one in the console, we see
+    // it individually, so it did not need that variable with all the properties
+    // on it. We can destructure them all into four separate values as we want.
+    // Another cool thing about it is that you do not need to care about the
+    // order in which they come out, like flipping GPB property with USD
+    // because it is just an object. So we could put this in
+    // any order that we want and it would still just work fine.
+    // Especially what is cool is that if you only need AUD and USD, you don't
+    // need to destructure the rest of them and they will never show their face.
+    // They are simply just going be returned for this function and
+    // destructured immediately. The other two will just be thrown out. We can
+    // console.log(USD, AUD). So that is two things there, where you can return
+    // multiple values as well as pick and choose the pieces that you want
+    // to return from a function.
+
       function convertCurrency(amount) {
         const converted = {
           USD: amount * 0.76,
@@ -28,8 +46,74 @@
         return converted;
       }
 
-      const hundo = convertCurrency(100);
-      console.log(hundo);
+      // const hundo = convertCurrency(100);
+      // // console.log(hundo);
+      // console.log(hundo.AUD);
+      // console.log(hundo.MEX);
+
+      // const { USD, GPB, AUD, MEX } = convertCurrency(100);
+      // console.log(USD, GPB, AUD, MEX);
+
+      const { USD, AUD } = convertCurrency(100);
+      console.log(USD, AUD);
+
+      // Other type of concept we want to cover is default named arguments. We
+      // already went though that last example, where we had a function called
+      // tipCalc. We had the total, and we had the tip. We set the tip to
+      // default 15 percent and then we had the tax which we set to default 0.13.
+      // That works well, because we know that the first thing is going to be
+      // total, second thing is going to be tip, third thing will be tax.
+      // There is some things we can do to make order independent. The first
+      // thing we are going to do is just finish off this function here and
+      // return to total, the tip times the total and the tax times the total.
+      // Then we are going to wrap these three arguments in curly brackets.
+      // What that is going to do is that, when we pass in an object, it is
+      // going to destructure them into three variables total, tip, and tax.
+      // So it is not like we are going to have to say options.total,
+      // options.tip. It is going to destructure into three variables
+      // available inside of this actual function. Then when we call it, we
+      // simply run tipCalc and we pass it an object with the total value.
+      // Maybe that is going to be $200. We pass the tip at 0.20 and we pass
+      // the tax at 0.13. We are going to put that in a variable and refresh.
+      // In the console, we get $266. That is the total. But what is really
+      // important here, first of all. We can leave off things we don't need.
+      // like tax and in the console we still get 266. As well we can put them
+      // in any order that we please.
+
+      // function tipCalc({ total, tip = 0.15, tax = 0.13 }) {
+      //   return total + (tip * total) + (tax * total);
+      // }
+
+      // const bill = tipCalc({ total: 200, tip: 0.20, tax: 0.13 });
+      // console.log(bill);
+
+      // const bill = tipCalc({ total: 200, tip: 0.20,});
+      // console.log(bill);
+
+      // So we are passing in an object here and it is getting destructured.
+      // const bill = tipCalc({ tip: 0.20, total: 200 });
+      // console.log(bill);
+
+      // One last thing is, if you want to pass in nothing, let's say if we put
+      // a default for the the total to be $100. And we just want to run
+      // tipCalc(); What happened in the console? We get an error because it
+      // cannot match against undefined or null. It is a destructuring error
+      // and that is because we have passed in none of these things. We passed
+      // in no object for it to destructure against, so you have to give it
+      // itself a default argument so that if the entire argument which is one
+      // object, if no object is passed it is going to default to just a blank
+      // object and all of the three are going to to be in. This is a little
+      // bit of a funky syntax, so it takes some time to get comfortable with
+      // it. It is definitely worth getting used to because it is going to
+      // really help you reduce a lot of your boilerplate code where you are
+      // checking for defaults.
+
+      function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
+        return total + (tip * total) + (tax * total);
+      }
+
+      const bill = tipCalc();
+      console.log(bill);
 
     </script>
   </body>
