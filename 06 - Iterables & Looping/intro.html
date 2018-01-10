@@ -6,8 +6,24 @@
   </head>
   <body>
     <script>
+    // Adding a shuffle method which we made for the prototype of every
+    // single array.
+    /* eslint-disable */
+     Array.prototype.shuffle = function() {
+       var i = this.length, j, temp;
+       if ( i == 0 ) return this;
+       while ( --i ) {
+        j = Math.floor( Math.random() * ( i + 1 ) );
+        temp = this[i];
+        this[i] = this[j];
+        this[j] = temp;
+      }
+      return this;
+    };
+
+
       // We have a new type of loop in JavaScript, and that is the for of loop.
-      // It is used to loop over any type of datat that isn't iterable. We are
+      // It is used to loop over any type of data that isn't iterable. We are
       // going to learn all about different types of iterables and we are going
       // to learn why this for of loop is so useful when we hit things like
       // generators and maps and sets. For now we want to get an idea as to
@@ -15,11 +31,74 @@
       // anything that can be looped over. If you have an array, you can loop
       // over an array, or a string, or a map or a set, or a generator. We are
       // going to look at all kinds of different examples as to when you can do
-      // it, but let'ts get going with looking at some of the existing loops
+      // it, but let's get going with looking at some of the existing loops
       // first, and see what are the shortcomings of our existing loops, and
       // why does for of sort of shine above all of them in a couple of these
-      // use cases. 
+      // use cases.
+
+      // First use case:
+      // We have an array with 4 items in it. We are going to look at the
+      // regular for loop.
       const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib'];
+
+      cuts.shop = 'MM MEats';
+
+      // for (let i = 0; i < cuts.length; i++) {
+      //   console.log(cuts[i]);
+      // }
+
+      // In the console you will see each item that is in the array.
+      // What is the downside?
+      // The console.log(cuts[i]); is confusing syntax.
+
+      // What is other kind of loops do we have?
+      // We have the .forEach array method, if we says cuts.forEach that
+      // will give us a function, we can use an arrow function. forEach will
+      // us a function called cut and we console.log(cut)
+      // cuts.forEach((cut) => {
+      //   console.log(cut);
+      // });
+      // This works pretty well. What is the downside to that? Well, we
+      // cannot abort this loop. We cannot skip one of the items in the array.
+      // For example, if I wanted to stop once we hit the word brisket, I would
+      // say if cut = bristket then I would break and then that it console.log
+      // first two items only (chuck and brisket) and then it would stop the
+      // loop. In the console, we get an Uncaught SyntaxError: Illegal break
+      // statement error. It couldn't work because you cannot use a break inside
+      // of a forEach loop. Same goes for continue. We cannot continue or skip.
+      // cuts.forEach((cut) => {
+      //   console.log(cut);
+      //   // if(cut === 'Brisket') {
+      //   //   break;
+      //   // }
+      // });
+      // I like to use forEach in a couple of use cases, but if you need to be
+      // able to skip over then thats a good one.
+
+      // We also have the for...in loop. In the console, this loop with give us
+      // the index. With the shuffle prototype method, this loop iterates over
+      // everything in the array, including things that have been added to the
+      // prototype. It iterates over the items of the collection and over
+      // additional things that have been added. Now anytime you added a
+      // property or anything to the array, it will also show up in this loop.
+
+      // for (const index in cuts) {
+      //   console.log(cuts[index]);
+      // }
+
+      // Next we have the for...of loop, which gives us the best of all three
+      // worlds. You are able to use the for...of loop for any type of data,
+      // except objects. Despite adding a prototype type to the array (shuffle),
+      // we still only get actual items of the cuts array with the for...of
+      // loop. You are able to use break and continue as well.
+
+      for (const cut of cuts) {
+        if(cut === 'Brisket') {
+          // skips over Brisket successfully
+          continue;
+        }
+        console.log(cut);
+      }
 
     </script>
   </body>
