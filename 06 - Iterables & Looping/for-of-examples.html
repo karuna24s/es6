@@ -6,6 +6,16 @@
   </head>
   <body>
     <script>
+      // Let's take a deeper look at what an iterable actually is. Here I got
+      // an array and I am looping over it and I add a console.log(cut).
+      // What if I want to get the index of that individual cut. There is no
+      // good way to do that here unless I were to say cuts that indexOf and
+      // find it every single time. But what we don't know about yet there are
+      // generators (it will be covered in es6 course). IF you go into your
+      // console and type in cuts.entries(); What will that return? An array
+      // iterator. If you open it up, you expect to get all the data, but there
+      // is nothing in there. All you know that there is a next function that we
+      // can call on it. 
       const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib'];
 
       for (const cut of cuts) {
