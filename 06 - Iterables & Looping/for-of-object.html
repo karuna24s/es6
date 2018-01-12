@@ -7,16 +7,43 @@
   <body>
 
     <script>
+      // Now there is one thing that we have not been able to iterate
+      // over and that is an object. An object is not an iterable. So we
+      // are attempting to use const prop of apple and console.log the
+      // property. When we try that, we get an type error that apple is not an
+      // iterable.
+      // So what are some of our options? There is an object method called
+      // entries. Just like we used .entries against our array, we are going
+      // to be able to do .entries against an object. Now we don't have .entries
+      // yet. Object.values and Object.entries will be included in ES2017. If you
+      // would like to use .entries..here is a simple solution, you can go to
+      // You can use Object.keys(apple) which will return an array of all the
+      // keys. So we don't have values left and we don't have entries yet.
+
       const apple = {
         color: 'Red',
         size: 'Medium',
         weight: 50,
         sugar: 10
       };
-
-      for (const prop in apple) {
+      // returns all the keys
+      for (const prop of Object.keys(apple)) {
         console.log(prop);
       }
+
+      // if you want to find the values
+      // for (const prop of Object.keys(apple)) {
+      //   const value = apple[prop];
+      //   console.log(value, prop);
+      // }
+
+      // or
+      for (const prop in apple) {
+        const value = apple[prop];
+        console.log(value, prop);
+      }
+      // Until we have objects and entries, let's stick to just using a for...in
+      // loop for objects.
 
     </script>
   </body>
