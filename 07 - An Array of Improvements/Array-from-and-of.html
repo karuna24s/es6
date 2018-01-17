@@ -11,6 +11,30 @@
       <p>Snickers</p>
     </div>
     <script>
+      // We have a whole bunch of new array methods added in ES6. We are going
+      // to talk about .from() and .of() first. The reason we are going to
+      // talk about these two together is because they both are not not on the
+      // prototype. What that means is, if we create a new array like:
+      // const ages = [23, 34, 234];
+      // and then ages does not have .from () method and it does not have .of
+      // howcome? Because they are not on the prototype, they are on the array
+      // itself, so there is Array.of(); and Array.from(); What do these do?
+      // First thing that they do is that Array.from(); will take something that
+      // is array-ish and turn it into a true array. There is a couple of
+      // situations where we often need that, and that is when we are working
+      // with DOM elements. Let's go ahead and select all the people (all the p
+      // tags inside the people div).
+      const people = document.querySelectorAll('.people p');
+      // Now let's console.log people and see what we have.
+      console.log(people);
+      // So we have all of these people here but it is a nodelist. What if we
+      // want an array of these people's names? We could do the following:
+      // this map function takes in person and returns person.textContent
+      const names = people.map(person => person.textContent);
+      // We get this error that people.map is not a function.
+      // Why is that? Lets add a console.log(people) and check what is going on
+      // We have a length method, but the prototype is not an array, it is a
+      // nodelist.
 
     </script>
   </body>
