@@ -24,17 +24,114 @@
       // situations where we often need that, and that is when we are working
       // with DOM elements. Let's go ahead and select all the people (all the p
       // tags inside the people div).
-      const people = document.querySelectorAll('.people p');
+
+      // const people = document.querySelectorAll('.people p');
+
       // Now let's console.log people and see what we have.
-      console.log(people);
+      // console.log(people);
       // So we have all of these people here but it is a nodelist. What if we
       // want an array of these people's names? We could do the following:
       // this map function takes in person and returns person.textContent
-      const names = people.map(person => person.textContent);
+
+      // const peopleArray = Array.from(people);
+      // console.log(peopleArray);
+
+      // const names = people.map(person => person.textContent);
+
       // We get this error that people.map is not a function.
       // Why is that? Lets add a console.log(people) and check what is going on
       // We have a length method, but the prototype is not an array, it is a
-      // nodelist.
+      // nodelist. When is something is array-ish or array like and that means
+      // that it has a length, which means it is array-ish, it has some of the
+      // methods but doesn't have all of the methods that a regular array would
+      // have. What we need to do in order to make this map work? We simply would
+      // have to make another variable where you make it equal to Array.from
+      // method where you pass in the thing that is array like. In this case, it
+      // const peopleArray = Array.from()
+      // is a nodelist that has a length, so it is being to convert from that to
+      // a real one. When I console.log(peopleArray); We still get that error as
+      // we did not switch that out. But now the prototype is an array now and
+      // you open that all the methods that you are probably used to. You can
+      // call Array.from() onto it and then we take this peopleArray and map
+      // over that instead of people.
+
+      // const names = peopleArray.map(person => person.textContent);
+
+      // call names in the console and it returns the names array-ish
+
+      // We could have also done this:
+
+      // const people = Array.from(document.querySelectorAll('.people p'));
+      // const names = people.map(person => person.textContent);
+
+      // We could have also done this as well (where Array.from() takes a
+      // second argument, which us a map function, which allows us to modify
+      // data as we are creating the array.):
+      // const people = Array.from(document.querySelectorAll('.people p'));
+
+      // const people = document.querySelectorAll('.people p');
+      // const peopleArray = Array.from(people, person => {
+      //   console.log(person);
+      //   return person.textContent;
+      // });
+      // // add a console.log(peopleArray);
+      // console.log(peopleArray);
+
+      // Now we are going to comment out this names array because Array.from()
+      // will take a second argument which is a map function. I am going to say
+      // person and from that we are going to return whatever we want. We add
+      // a console.log and it returns Karuna Karuna Karuna.
+      // Howcome? Because it loops over every single paragraph tag and then
+      // returns to us something. Now what is this person here? Let's console.
+      // log it. It returns each p tag. Each person is the actual DOM node,
+      // so if we return instead of returning obviously just Karuna, we are
+      // going to return person.textContent That should give us the actual
+      // person's name. Now the peopleArray = Wes, Kait, Snickers. We created
+      // that array in one shot. We don't need the names array, where we have to
+      // map it separately because Array.from() will take a second argument,
+      // which is the ability to map over it.
+      // const names = people.map(person => person.textContent);
+
+      // Another use case is that if we want to convert the arguments object
+      // into an actual array. We are going to create a function called sumAll.
+      // When we run it, we are going to call sumAll() and pass it a whole bunch
+      // of numbers that all need to be added up. We did an example like this
+      // where we looped over it. However, if you want to use a reduce one, we
+      // are going to figure out how to do that.
+
+      // Inside of this function we are going to console.log(arguments). In the
+      // console, we notice that it looks like an array and that would be a
+      // perfect use case for reduce. We are going to take arguments and reduce
+      // it which will take the previous and next and return the previous +
+      // the next. I am going to start with 0. In the console we get the
+      // following error, Arguments.reduce is not a function. Why not? If we
+      // console.log(arguments); do we see areguments.reduce. Let's checkout the
+      // prototype in the console. We don't see the reduce method. Why not?
+      // Because this is arguments and it is not an array. It is array-ish. All
+      // we would have to do is const nums = Array.from(arguments) and then we
+      // use that nums one to reduce on over it and our sumAll. We can call
+      // sumAll() in the console and that we get sum of all of over numbers.
+      // That is a pretty common use case where you actually want to convert
+      // your arguments object on to an array. It is array-ish because it is
+      // has a length method but it doesn't have any of the other methods on it.
+
+
+      function sumAll() {
+        // console.log(arguments);
+        const nums = Array.from(arguments);
+        // return arguments.reduce((prev, next) => prev + next, 0);
+        return nums.reduce((prev, next) => prev + next, 0);
+      }
+      sumAll(2,34,23,234,234,234234,234234,2342);
+
+      // Next up we have Array.of(). Pretty much how it works is you say
+      //   const ages = Array.of(); and you pass it as many arguments as you
+      // want. That is going to create an array from every single argument you
+      // pass it.
+      const ages = Array.of(12,4,23,62,34);
+      console.log(ages);
+      // Returns (5) [12, 4, 23, 62, 34]
+
 
     </script>
   </body>
