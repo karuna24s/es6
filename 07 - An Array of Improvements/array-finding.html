@@ -177,7 +177,17 @@
             "display_src":"https://scontent.cdninstagram.com/hphotos-xpt1/t51.2885-15/e35/11326072_550275398458202_1726754023_n.jpg"
          }
       ];
-
+      // Arrays now have a .find() and .findIndex() methods, which are really
+      // helpful and you will not need to add utility library like lodash. A very
+      // common use case is when you have some sort of data that comes back
+      // from an API. Here we have some data that comes back from Instagram. It
+      // is a posts array, where each item inside of the post is an object.
+      // Of we want to find the entire object inside of the posts array
+      //  based upon the code, or id. Because it is an object we can't post.id
+      // of the object. We can say anything like posts[:id] because we don't
+      // have any keys to grab things from an array because an array is always
+      // indexed based. What we actually need to do is we will create a
+      const post = po
       .find()
       .findIndex()
 
