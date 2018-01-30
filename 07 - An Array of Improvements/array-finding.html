@@ -177,6 +177,7 @@
             "display_src":"https://scontent.cdninstagram.com/hphotos-xpt1/t51.2885-15/e35/11326072_550275398458202_1726754023_n.jpg"
          }
       ];
+      // .find()
       // Arrays now have a .find() and .findIndex() methods, which are really
       // helpful and you will not need to add utility library like lodash. A very
       // common use case is when you have some sort of data that comes back
@@ -186,10 +187,70 @@
       //  based upon the code, or id. Because it is an object we can't post.id
       // of the object. We can say anything like posts[:id] because we don't
       // have any keys to grab things from an array because an array is always
-      // indexed based. What we actually need to do is we will create a
-      const post = po
-      .find()
-      .findIndex()
+      // indexed based. What we actually need to do is we will create a variable
+      // like const post = posts.find(); .find() is a callback function which
+      // returns true or false until you actually find it. It's going to loop
+      // over every single post that we have and we are going to look for the
+      // specific post that I want. We are going to open a block and then
+      // refactor it.
+      // const post = posts.find(post => {
+      //   // Check out what we can we find in the console.
+      //   // This is looping over every single one and giving me the entire post.
+      //   // And we console.log(post.code); and it should give us all of the codes.
+      //   // console.log(post);
+      //   console.log(post.code);
+      //   // In the console, we should have now have a variable called post. And
+      //   // that is the actual one from our object. So now we have the entire post
+      //   // and we can go ahead and grab the caption, source, or the id, or the
+      //   // number of likes from that Instagram post. This can be done a lot easier.
+      //   // This is just explicit, so you can see what is going on,
+      //   // if(post.code === 'VBgtGQcSf') {
+      //   //   return true;
+      //   // }
+      //   // return false;
+      //
+      // });
+
+      // but we can actually use this. For each post we say, does the post.code
+      // equal to the actual one we are looking for:
+      // So we grab an ID here, and paste it in there. We should be able to
+      // console.log(post);
+      // const post = posts.find(post => post.code === 'VBgtGQcSf');
+      // console.log(post);
+
+      // One other improvement we can do not hard code the code instead put it
+      // in a variable called code and then it should still be able to find the
+      // post depending on our code.
+      // const code = 'VBgtGQcSf';
+      // const post = posts.find(post => post.code === code);
+      // console.log(post);
+      // That is great for finding the actual thing inside of the array. If you
+      // want to find multiple, how would you do that? You would use .filter()
+      // and that would give you an array of objects instead.
+
+      // .findIndex()
+      // That is really helpful when you have the item you want but you want to
+      // know where in the array is it actually? What we want to do is delete
+      // one of these posts and all that we know is that we have the ID or the
+      // code. We need find out where in this is it so we can delete it. We are
+      // going to say const postIndex = posts.findIndex() as should below and :
+      // const code = 'VBgtGQcSf';
+      // const post = posts.find(post => post.code === code);
+      // const postIndex = posts.findIndex((post) => {
+      //   if(post.code === code) {
+      //     return true;
+      //   }
+      //   return false;
+      // });
+      // We should be able to find what the index is of that post. It is the
+      // 22nd post in there.
+      // console.log(postIndex);
+
+      // Let's clean up the code:
+      const code = 'VBgtGQcSf';
+      const post = posts.find(post => post.code === code);
+      const postIndex = posts.findIndex(post => post.code === code);
+      console.log(postIndex);
 
     </script>
   </body>
