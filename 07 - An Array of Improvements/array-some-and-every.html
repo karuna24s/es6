@@ -6,13 +6,38 @@
   </head>
   <body>
     <script>
+      // There are two other array methods, some() and every(). These actually
+      // aren't part of ES6, but it is great to know how to use them. Some and
+      // every will check the data in an array to check if some of the items
+      // meet what you are looking for or all of the items meet what you are
+      // looking for.
+      // We have two examples below where we have an array of ages. And we want
+      // to know is there at least one adult in the group?
       const ages = [32, 15, 19, 12];
-
+      // const youngins = [1, 2, 2, 5];
       // 👵👨 is there at least one adult in the group?
+      // We are using some because we want to find at least one person in the
+      // in the group that is greater or equal to 18. Some is going to take a
+      // callback which is age and we want to say age is greater than or equal
+      // to 18. What it's going to do is check every single one and as soon as
+      // it hits one of the items that is true, then it is going to return true
+      // in adultPresent. We are going add a console.log(adultPresent); and we
+      // get true. Because it hits the first item and says that we have it.
+      const adultPresent = ages.some(age => age >= 18);
+      console.log(adultPresent);
 
+      // Check if there are any adults in youngins. We will get false.
+      // const adultPresent = youngins.some(age => age >= 18);
+      // console.log(adultPresent);
 
+      // Next we want to know if:
       // 🍻 is everyone old enough to drink?
-    
+      // We want to check if everyone in this array is old enough to drink?
+      // We are going to add the following line:
+      const allOldEnough = ages.every(age => age >= 19);
+      // If age is greater than or equal to 19, then it will return true to
+      // otherwise we will get false.
+      console.log(allOldEnough);
 
     </script>
   </body>
