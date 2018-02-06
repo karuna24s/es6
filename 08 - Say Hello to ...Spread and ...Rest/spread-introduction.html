@@ -19,9 +19,63 @@
 
       // We want to make a third array called pizzas where we combine the
       // featured and specialty arrays together.
+      // How do you combine two arrays? You just take one and and call concat
+      // against it and you pass it the second one.
+      // const pizzas = featured.concat(specialty);
+      // That will work. Add a console.log and checkout what happens in the console.
+      // console.log(pizzas);
+      // What if you wanted to put vegetable pizza right in the middle of that?
+      // How would you do that? You would have to make a blank array. Then
+      // let pizzas = [];
+      // You would have add in the next line:
+      // pizzas = pizzas.concat(featured);
+      // pizzas.push('veg');
+      // pizzas = pizzas.concat(specialty);
+      // And over write the entire thing. This just becomes a big headache for
+      // having to manage that. What you can do is, you can take every single
+      // item in the array and spread into a new array.
+
+      // If I have the string of 'karuna', what is every item in a string? Every
+      // item in a string is just each character. What you can do is you pop an
+      // array around it and that just gives you an array of one thing.
+      // ['karuna'] => ["karuna"]
+
+      // What if I wanted every single item of that iterable to be its own item
+      // of the array? Inside of that dot, dot dot, that is going to spread each
+      // item into the actual array.
+      // [...'karuna'] => ["k", "a", "r", "u", "n", "a"]
+
+      // Similarly, what we can do is take these existing arrays and spread the
+      // items like featured, and spread the items of specialty into the new
+      // pizzas array.
+      // const pizzas = [...featured, ...specialty];
+      // And now we should be able to have the pizzas array which has absolutely
+      // every single element in here.
+
+      // Similarly I can just also add veg in the middle of it:
+      // const pizzas = [...featured, , 'veg', ...specialty];
+
+      // I am just saying add every single item from here, and we should be
+      // good. Let's take a look at what pizzas is now. Type in pizzas in
+      // the console. And we see veg being added in the middle of the array.
+      // What nice about that is that if you even want to copy an array, how
+      // can we do that.
+
+      // Let's say we want to take a copy of the pizzas array.
+      // const fridayPizzas = [...pizzas];
+
+      // If you add:
+      // const fridayPizzas = pizzas;
+      // You are just referencing the pizzas array to the fridayPizzas and not
+      // make a copy of it.
+
+      // A spread will take ever single item from an iterable and apply it into
+      // the new array. 
 
       const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian'];
       const specialty = ['Meatzza', 'Spicy Mama', 'Margherita'];
+      const pizzas = [...featured, 'veg', ...specialty];
+      const fridayPizzas = [...pizzas];
 
       const deepDish = {
         pizzaName: 'Deep Dish',
