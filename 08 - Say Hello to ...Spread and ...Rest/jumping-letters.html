@@ -42,10 +42,34 @@
 
       // Grab the h2 tag
       // We have the actual heading element and we need to take the text out of
-      // the spread, wrap every single item in a span.
+      // the spread, wrap every single item in a span and inject it right back in.
       const heading = document.querySelector('.jump');
+      // run sparanWrap function
+      // Remember we want every single word to be an individual item.
+      // const spans = sparanWrap(heading.textContent);
 
-      // Create a function called SparanWrap
+      // Now we are able to see each single character and spreads is now in its
+      // own array because we took every single item out of the word and spread
+      // it. However that is not good enough because we don't want to return
+      // just an array. But we need to have every single item wrapped. That is
+      // a use case for .map where we will take in a letter and return a template
+      // string where it is a span and inside of that we have the letter. We
+      // loop over every single letter and return that letter but wrapped in a
+      // span. Being that we don't want an array but a string add a .join('')
+      // Now that we have our HTML. We should now be able to the following:
+      heading.innerHTML = sparanWrap(heading.textContent);
+
+      // console.log(spans);
+      // Create a function called sparanWrap, which is wrapping every single
+      // item in spans. That is a function that takes in a word and it is going
+      // return a bunch of HTML.
+      function sparanWrap(word) {
+        // Add a console.log(word) and see what data we can retrieve
+        // console.log(word);
+        // What we can do is spread that word
+        // return [...word];
+        return [...word].map(letter => `<span>${letter}</span>`).join('');
+      }
 
 
     </script>
