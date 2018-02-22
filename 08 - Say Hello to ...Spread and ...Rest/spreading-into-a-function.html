@@ -27,9 +27,40 @@
       // an argument. It is essentially doing this:
       // inventors.push('Musk', 'Jobs'); because you can't pass push an array.
       // You can pass push as many arguments as you wish. So that is a lit bit
-      // funky.
+      // funky. Rather than that, what we could do is we simply call push and only
+      // pass it the newInventors.
+      // inventors.push(newInventors);
+      // console.log(inventors);
+      // Let's the issue we get with that. That's the array, but if you were to spread
+      // into it, what does spread do? Spread is going to take Musk and Jobs and pass
+      // it as individual arguments into push. Now we don't need have to worry about
+      // any of that apply method.
+      // inventors.push(...newInventors);
+      // console.log(inventors);
+      // We just spread right into the functions. We have been spreading into arrays.
+      // But you can also spread into a function, where every single item of the
+      // array is going to be used as an argument.
+
       const inventors = ['Einstein', 'Newton', 'Galileo'];
       const newInventors = ['Musk', 'Jobs'];
+      inventors.push(...newInventors);
+      console.log(inventors);
+
+      // Let's build another example ourselves where we have a function that saysHi
+      // It is going to have a first name and last name and we are simply just going
+      // to alert (`Hey there ${first} ${last}`); And then I have someone's name
+      // so const name = ['Karuna', 'Sehgal']; When we call the function we can
+      // spread the array and that will pass 'Karuna' as the first argument and
+      // 'Sehgal' as the second argument and the alert message appears correctly
+      // with the updated arguments.
+
+      const name = ['Karuna', 'Sehgal'];
+
+      function sayHi(first, last) {
+        alert(`Hey there ${first} ${last}`);
+      }
+
+      sayHi(...name);
 
     </script>
   </body>
