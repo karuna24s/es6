@@ -6,6 +6,28 @@
   </head>
   <body>
     <script>
+
+      // A really great use case for spread operators is when you spread into a
+      // function. Let's look at this example we have an inventors array right
+      // here and we want to take items from the newInventors array and put them
+      // into inventors. We don't want a third array. We don't want to overwrite
+      // the entire array. I just want to add them on the end. You might think
+      // we take inventors and call the push method on it and we pass it the
+      // new inventors. Let's see what that gives us:
+      // inventors.push(newInventors);
+      // console.log(inventors);
+      // Now we get the three items and a fourth item which is the second array
+      // of two things and inside it is the new inventors. But that is not what
+      // we want. We just took the array and added it as a fourth item, so we
+      // have an array in an array. We don't want that. A way that we could
+      // have solved this in the past is:
+      // inventors.push.apply(inventors, newInventors); and that work. What is
+      // happening here is when you call apply, it's going to run the function
+      // that you called apply against. But as every single item of the array as
+      // an argument. It is essentially doing this:
+      // inventors.push('Musk', 'Jobs'); because you can't pass push an array.
+      // You can pass push as many arguments as you wish. So that is a lit bit
+      // funky.
       const inventors = ['Einstein', 'Newton', 'Galileo'];
       const newInventors = ['Musk', 'Jobs'];
 
