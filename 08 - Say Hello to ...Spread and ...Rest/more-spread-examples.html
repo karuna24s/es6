@@ -16,15 +16,37 @@
       // all of these people in the people div class.
       // Let's say const people = document.querySelectorAll('.people p'). And
       // add a console.log to people to see what is going on in the console.
+      // So we got all the people on the list, but it is not an array. Instead it
+      // is a nodelist. If I want to map against people we do something like:
+      // const name = people.map(); You know that we are not able to do that
+      // because people.map() is not a function. People is a nodelist and the
+      // prototype doesn't have .map or .reduce or any of the our arrays. So you
+      // could do this instead:
+      // const people = Array.from(document.querySelectorAll('.people p'));
+      // and that would give us a true array instead of a nodelist where our
+      // map function is available.
+      // There is another way we could convert a nodelist to an array is using
+      // a spread operator and take every single item that it selects and spread
+      // it right onto an array. So that is going to take everything that it
+      // selects because a nodelist is an iterable and every single item from
+      // that iterable can then be spread onto a new array:
+      // const people = [...document.querySelectorAll('.people p')];
+      // If you are on a team Array.from reads a little bit nicer compared to
+      // using a spread operator.
 
-      const people = document.querySelectorAll('.people p');
-      console.log(people);
+      const people = Array.from(document.querySelectorAll('.people p'));
+      const names = people.map((person) => person.textContent );
+      // console.log(people);
+      // Now we have names array of every single name
 
       const deepDish = {
         pizzaName: 'Deep Dish',
         size: 'Medium',
         ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
       };
+
+      // Here is another of example of when you want to create a new array off
+      // of a property on an object.
 
     </script>
   </body>
