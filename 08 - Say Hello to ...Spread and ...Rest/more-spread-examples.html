@@ -36,7 +36,8 @@
 
       const people = Array.from(document.querySelectorAll('.people p'));
       const names = people.map((person) => person.textContent );
-      // console.log(people);
+      console.log(people);
+      console.log(names);
       // Now we have names array of every single name
 
       const deepDish = {
@@ -46,7 +47,64 @@
       };
 
       // Here is another of example of when you want to create a new array off
-      // of a property on an object.
+      // of a property on an object. This is similar to where we merged two
+      // arrays togerther. Maybe we did:
+      // const shoppingList = []; We know we have to buy milk and flour to make
+      // the pizza and being that tonight is deepDish pizza night we have to get
+      // all the ingredients from it. What we can do is just immediately spread
+      // all of the ingredients from deepDish.ingredients. Since that is an
+      // array it is going to take every single item from that and put it into
+      // the new shoppingList. If I add a console.log(shoppingList), we know
+      // have every single item in it.
+      const shoppingList = ['Milk', 'Flour', ...deepDish.ingredients];
+      console.log(shoppingList);
+
+      // This is an example where we have an array of objects and we need to
+      // remove one of those objects from the array (occurs quite often in
+      // React and Redux) and all you are given is this id variable with that id
+      // inside of it. How do you actually take it away?
+      // First we need to figure out where in the array is this comment. As the
+      // ID does not tell us anything about its location inside the array.
+      // How would we do that?
+      // We would use the .findIndex() method of the array:
+      // const commentIndex = comments.findIndex(comment => comment.id === id);
+      // When the comment.id === id variable then return and that will tell us
+      // where the index is. So we had in a console.log(commentIndex) which tells
+      // us that the index is 2. That is the one we want.
+      // Now how do we actually delete it from the array.
+      // Previously what we had to do is slice everything before, slice
+      // everything after. What we can do here is we will make a new comment
+      // variable. We will say:
+      // const newComments = [];
+      // Now we want everything up until the mean comment and everything after
+      // the mean comment. What we can do is slice from the start to where we
+      // want, and then slice from one after the one that we want to the end.
+      // So we will say:
+      // const newComments = [comments.slice(0,commentIndex), comments.slice(commentIndex + 1)];
+      // Let's add a console.log(newComments); And we get an array of arrays, which
+      // is the first part and the second part. That is not very useful because you
+      // don't want an array of arrays. You want an array of comments objects.
+      // So what we can do is just spread these two and spread the second part as
+      // well and that will take every item out of the array and put it into this
+      // new comment array.
+      // const newComments = [...comments.slice(0,commentIndex), ...comments.slice(commentIndex + 1)];
+      // now we have the newComments array and successfully removed the mean comment
+      // from the array.
+
+      const comments = [
+        { id: 209384, text: 'I love your dog!' },
+        { id: 523423, text: 'Cuuute! 🐐' },
+        { id: 632429, text: 'You are so dumb' },
+        { id: 192834, text: 'Nice work on this wes!' },
+      ];
+
+      const id = 632429;
+      const commentIndex = comments.findIndex(comment => comment.id === id);
+      console.log(commentIndex);
+
+      const newComments = [...comments.slice(0,commentIndex), ...comments.slice(commentIndex + 1)];
+      console.log(newComments);
+
 
     </script>
   </body>
