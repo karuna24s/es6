@@ -6,12 +6,39 @@
   </head>
   <body>
     <script>
+      // We will cover some commonly used object literal upgrades. We have an
+      // example here, where we have all these variables and want to put them in
+      // to an object, where the property names are the same as the variables.
+      // So we are going take the property names and place the variables in there.
+
       const first = 'snickers';
       const last = 'bos';
       const age = 2;
       const breed = 'King Charles Cav';
-
-
+      // const dog = {
+      //   first: first,
+      //   last: last,
+      //   age: age,
+      //   breed: breed,
+      // };
+      // Now that is ok, but it is very repetitive as we are doing the samething
+      // over and over again. We just made an object with all those variables
+      // inside of it. If we add a console.log that you will see it is just a
+      // regular object.
+      // console.log(dog);
+      // What we can do is if the property name and the variable you are setting
+      // it to are named the exact same thing. You do not need to do this twice.
+      // You can take out the variables:
+      const dog = {
+        first,
+        last,
+        age,
+        breed,
+      };
+      console.log(dog);
+      // This may look strange because this kind of looks like an array. But it
+      // is an object. Doing that still gives the exact same object we are
+      // looking for. 
     </script>
   </body>
 </html>
