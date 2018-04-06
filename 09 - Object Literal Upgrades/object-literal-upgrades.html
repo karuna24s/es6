@@ -30,15 +30,27 @@
       // it to are named the exact same thing. You do not need to do this twice.
       // You can take out the variables:
       const dog = {
-        first,
+        firstName = first,
         last,
         age,
         breed,
+        pals = ['Hugo, Sunny'],
       };
       console.log(dog);
       // This may look strange because this kind of looks like an array. But it
       // is an object. Doing that still gives the exact same object we are
-      // looking for. 
+      // looking for, just without the repetitive property name is equal to the
+      // actual variable name. We don't have to go all in on that. That is only
+      // when that is the actual case. For example if you want to rename a
+      // property to firstName, and the variable could be first. That is no
+      // problem there. If you want to add pals, it would an array. You only
+      // need to use it when the property name and the variable name are
+      // exactly the same.
+
+      // Another upgrade is when you have method definitions inside of an
+      // object. Let's say we have a modal object here, so let's call it
+      // const modal = {} and inside of that we have three methods. We got
+      // create, open and close. All of these are function 
     </script>
   </body>
 </html>
