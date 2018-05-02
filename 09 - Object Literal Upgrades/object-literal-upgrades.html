@@ -93,8 +93,42 @@
       // of the actual color set to yellow. You need to use these variables to
       // set a property and a value of an object. What you could do is create
       // an object literal.
+
+      // Created this function that just takes in the hex code and returns the
+      // inverseColor, so just the opposite color. If you want to make a key of
+      // the pocketColor opposite, how could you do that? You could make another
+      // variable here and then say pocketColorOpposite but that is not what you
+      // looking for. What you need to do is to compute the copy, which is just
+      // use a function, or a template string or any JavaScript right inside of
+      // the property name.
+
+      function invertColor(color) {
+        return '#' + ("000000" + (0xFFFFFF ^ parseInt(color.substring(1),16)).toString(16)).slice(-6);
+      }
+
       const key = 'pocketColor';
       const value = '#ffc600';
+      const tshirt = {
+        // what we are able to do is say that the key is equal to the actual value.
+        // what if you want the opposite color to go along withe the value as well,
+        // because maybe you are printing something on top of that pocket and you
+        // need to know what is the exact opposite color of that? It could go on
+        // top of it.
+        [key] = value,
+        // Get the key and then attach on the word Opposite. You can use this
+        // invertColor function and take the value as well. Now you have pocketColor
+        // and pocketColorOpposite. Those are being dynamically set on this actual
+        // variable (value).
+        [`${key}Opposite`]: invertColor(value)
+      };
+      // Previously what you had to do is make the tshirt object, then go and
+      // update the tshirt object like this:
+      // const tshire = {};
+      // tshirt[key] = value,
+      // tshirt[`${key}Opposite`]: invertColor(value)
+      // which is not the end of the world, but it is kind of cool that you can
+      // do it inside of an object literal.
+      // As you define it, you can compute the property keys.
     </script>
   </body>
 </html>
