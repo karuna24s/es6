@@ -129,6 +129,23 @@
       // which is not the end of the world, but it is kind of cool that you can
       // do it inside of an object literal.
       // As you define it, you can compute the property keys.
+
+      // Let's look at one more example where sometimes you have some data that
+      // you get from an API and you don't have much of an option to work with.
+      // You would have a little bit of a nicer structure but sometimes you
+      // might have a keys array, which has size, color and weight. Then you have
+      // a values array, which has medium, red, and 100.
+      const keys = ['size', 'color', 'weight'];
+      const values = ['medium', 'red', 100];
+      // And you need to make an object where you can say:
+      const shirt = {
+        // typically [keys[0]] and that is a computed property name here. One
+        // cool thing that you could do is:
+        [keys.shift()]: values.shift(),
+        [keys.shift()]: values.shift(),
+        [keys.shift()]: values.shift(),
+      }
+      console.log(shirt);
     </script>
   </body>
 </html>
