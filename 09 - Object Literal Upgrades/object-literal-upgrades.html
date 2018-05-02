@@ -50,7 +50,39 @@
       // Another upgrade is when you have method definitions inside of an
       // object. Let's say we have a modal object here, so let's call it
       // const modal = {} and inside of that we have three methods. We got
-      // create, open and close. All of these are function 
+      // create, open and close. All of these are functions in which they are
+      // just a function and after each on we have a comma.
+      const modal = {
+        create: function() {
+
+        },
+        open: function() {
+
+        },
+        close: function() {
+
+        }
+      }
+      // Instead of that we can remove the word function and the colon.. that is
+      // exact same thing as colon function. It is just a shorthand. There is
+      // no weirdness with the keyword this or anything and that is exactly why
+      // you should not use an arrow function when you are using a method of an
+      // object, because you have this other shorthand here and it is not going
+      // to interfere with the scoping of any of your variables or the keyword
+      // this. Similarly if you had an params to pass in like maybe selector,
+      // content, goodbye. You can pass them in as you normally would into a
+      // function.
+      const modal = {
+        create(selector) {
+
+        },
+        open(content) {
+
+        },
+        close(goodbye) {
+
+        }
+      }
     </script>
   </body>
 </html>
